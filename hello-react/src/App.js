@@ -10,7 +10,8 @@ class App extends Component {
     this.state={
       commentt:[
         {name:'44',content:'66'}
-      ]
+      ],
+      hideB:true,
     }
   }
   handleSubmitComment (comment) {
@@ -21,13 +22,17 @@ class App extends Component {
     //  this.setState({
     //   commentt: this.state.commentt.concat([comment])
     // })   
-    
+  };
+  changeShow(d){
+    this.setState({
+      hideB:d
+    })
   };
   render() {
     return (
       <div className="wrapper">
-          <Input onSubmit={this.handleSubmitComment.bind(this)}/>
-          <List comments={this.state.commentt}/>
+          <Input onSubmit={this.handleSubmitComment.bind(this)} changeShow={this.changeShow.bind(this)}/>
+          {this.state.hideB ? <List comments={this.state.commentt}/> : null}
       </div>
     );
   }

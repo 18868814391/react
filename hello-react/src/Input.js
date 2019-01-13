@@ -6,6 +6,7 @@ class Input extends Component {
         this.state={
             name:'',
             content:'',
+            stt:true,
         }
     }
     namechange(e){
@@ -25,6 +26,15 @@ class Input extends Component {
         }
         this.setState({ content: '' })
     };
+    changeBB(){
+        if(this.props.changeShow){
+            this.setState({
+                stt:!this.state.stt
+            })
+            this.props.changeShow(this.state.stt)            
+        }
+ 
+    };
   render() {
     return (
       <div>
@@ -33,6 +43,7 @@ class Input extends Component {
           评论内容：<textarea value={this.state.content} onChange={this.contentchange.bind(this)}></textarea>
           <br/>
           <button onClick={this.Submit.bind(this)}>发布</button>
+          <button onClick={this.changeBB.bind(this)}>隐藏内容</button>
       </div>
     )
   }
