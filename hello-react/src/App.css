@@ -6,3 +6,9 @@
 .comment{
   background: lightblue;
 }
+.hovcom:hover .hovtit{
+  display: inline-block;
+}
+.hovtit{
+  display: none;
+}

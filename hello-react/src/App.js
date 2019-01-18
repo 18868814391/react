@@ -10,17 +10,27 @@ class App extends Component {
     super()
     this.state={
       commentt:[
-        {name:'44',content:'66'}
+        
       ],
       hideB:true,
       hideC:true,
     }
   };
+  componentWillMount(){
+    if(localStorage.getItem('commentData')){
+      let daa=localStorage.getItem('commentData');
+      this.setState({
+        commentt:JSON.parse(daa)
+      })
+    }
+
+  };
   handleSubmitComment (comment) {
     this.state.commentt.push(comment)
     this.setState({
       commentt: this.state.commentt
-    }) 
+    })
+    localStorage.setItem('commentData', JSON.stringify(this.state.commentt))
     //  this.setState({
     //   commentt: this.state.commentt.concat([comment])
     // })   
@@ -40,18 +50,26 @@ class App extends Component {
       hideC:true
     })  
   };
-  componentDidMount(){
-    console.log(this.input)
-    this.input.focus()
-  };
+  ccc2(d){
+    console.log(666,d);
+    if(localStorage.getItem('commentData')){
+      let daa=localStorage.getItem('commentData');
+      let tt=JSON.parse(daa);
+      console.log(tt)
+      tt.splice(d,1)
+      this.setState({
+        commentt:tt
+      })
+      localStorage.setItem('commentData',JSON.stringify(tt))
+    }    
+  }
   render() {
     return (
       <div className="wrapper">
-          <input placeholder='focus this' ref={(input)=>this.input=input}></input>
           {this.state.hideC?<Clock hideClock={this.hideClock.bind(this)}/>:null}
           {this.state.hideC?null:<button onClick={this.showClock.bind(this)}>显示时间</button>}
           <Input onSubmit={this.handleSubmitComment.bind(this)} changeShow={this.changeShow.bind(this)}/>
-          {this.state.hideB ? <List comments={this.state.commentt}/> : null}
+          {this.state.hideB ? <List comments={this.state.commentt} ccc2={this.ccc2.bind(this)}/> : null}
       </div>
     );
   }

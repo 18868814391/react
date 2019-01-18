@@ -6,6 +6,7 @@ class Input extends Component {
         this.state={
             name:'',
             content:'',
+            createdTime:'',
             stt:true,
         }
     }
@@ -21,8 +22,16 @@ class Input extends Component {
     };
     Submit(){
         if(this.props.onSubmit){
-            const { name, content } = this.state
-            this.props.onSubmit({name, content})
+            console.log(+new Date())
+            // this.setState({
+            //     createdTime:+new Date() 
+            // })
+            // const { name, content,createdTime } = this.state;
+            this.props.onSubmit({
+                name:this.state.name, 
+                content:this.state.content,
+                createdTime:+new Date() 
+            })
         }
         this.setState({ content: '' })
     };
@@ -33,14 +42,25 @@ class Input extends Component {
             })
             this.props.changeShow(this.state.stt)            
         }
- 
     };
+    handBlur(event){
+        console.log(event.target.value)
+        localStorage.setItem('Rusername', event.target.value)
+    };
+    componentWillMount(){
+        this.setState({
+            name: localStorage.getItem('Rusername'),
+        })
+    }
+    componentDidMount(){
+        this.input.focus()
+      };    
   render() {
     return (
-      <div>
-          用户名：<input value={this.state.name} onChange={this.namechange.bind(this)}></input>
+      <div> 
+          用户名：<input value={this.state.name} onChange={this.namechange.bind(this)} onBlur={this.handBlur.bind(this)}></input>
           <br/>
-          评论内容：<textarea value={this.state.content} onChange={this.contentchange.bind(this)}></textarea>
+          评论内容：<textarea value={this.state.content} onChange={this.contentchange.bind(this)} ref={(input)=>this.input=input}></textarea>
           <br/>
           <button onClick={this.Submit.bind(this)}>发布</button>
           <button onClick={this.changeBB.bind(this)}>隐藏内容</button>
