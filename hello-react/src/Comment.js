@@ -6,11 +6,15 @@ class Comment extends Component {
   static PropTypes={
     comment: PropTypes.object.isRequired
   }
+  static contextTypes = {
+    store: PropTypes.object
+  }  
   constructor(){
     super()
     this.state={
       timeString:'',
       timer:null,
+      themeColor: ''
     }
   }
   componentWillMount(){
@@ -24,9 +28,18 @@ class Comment extends Component {
         })  
       }
     },1000)
+    this._updateThemeColor();
+    const { store } = this.context
+    this._updateThemeColor()
+    store.subscribe(() => this._updateThemeColor())    
   }
+  _updateThemeColor () {
+    const { store } = this.context
+    const state = store.getState()
+    this.setState({ themeColor: state.themeColor })
+  }  
   componentWillUnmount(){
-    clearInterval(this.timer)
+    clearInterval(this.timer);
   }
   handleDelete(){
     this.props.ccc(this.props.inde)
@@ -42,7 +55,7 @@ class Comment extends Component {
   }
   render() {
     return (
-      <div className="hovcom">
+      <div className="hovcom" style={{ color: this.state.themeColor }}>
         <span>{this.props.comment.name}:</span>
         <span dangerouslySetInnerHTML={{__html:this.zhuanyi(this.props.comment.content)}}></span>
         {this.props.comment.createdTime?<span>-----时间:{this.state.timeString}</span>:null}

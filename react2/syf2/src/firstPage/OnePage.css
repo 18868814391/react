@@ -1,0 +1,23 @@
+.fp-head{
+  width: 400px;
+  height: 40px;
+  background: lavender;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.fp-head-item{
+  height: 40px;
+  width: 50px;
+  background: lavenderblush;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+}
+.fp-con{
+  width: 400px;
+  background: lightblue;
+  height: 400px;
+  margin: 0 auto;
+}

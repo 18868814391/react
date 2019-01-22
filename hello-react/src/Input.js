@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class Input extends Component {
+    static contextTypes = {
+        store: PropTypes.object
+      }
+    
     constructor(){
         super()
         this.state={
@@ -8,6 +13,7 @@ class Input extends Component {
             content:'',
             createdTime:'',
             stt:true,
+            themeColor: ''
         }
     }
     namechange(e){
@@ -50,17 +56,26 @@ class Input extends Component {
     componentWillMount(){
         this.setState({
             name: localStorage.getItem('Rusername'),
-        })
+        });
+        this._updateThemeColor();
+        const { store } = this.context
+        this._updateThemeColor()
+        store.subscribe(() => this._updateThemeColor())        
     }
+    _updateThemeColor () {
+        const { store } = this.context
+        const state = store.getState()
+        this.setState({ themeColor: state.themeColor })
+      }    
     componentDidMount(){
         this.input.focus()
       };    
   render() {
     return (
       <div> 
-          用户名：<input value={this.state.name} onChange={this.namechange.bind(this)} onBlur={this.handBlur.bind(this)}></input>
+          <span style={{ color: this.state.themeColor }}>用户名：</span><input value={this.state.name} onChange={this.namechange.bind(this)} onBlur={this.handBlur.bind(this)}></input>
           <br/>
-          评论内容：<textarea value={this.state.content} onChange={this.contentchange.bind(this)} ref={(input)=>this.input=input}></textarea>
+          <span style={{ color: this.state.themeColor }}>评论内容：</span><textarea value={this.state.content} onChange={this.contentchange.bind(this)} ref={(input)=>this.input=input}></textarea>
           <br/>
           <button onClick={this.Submit.bind(this)}>发布</button>
           <button onClick={this.changeBB.bind(this)}>隐藏内容</button>
