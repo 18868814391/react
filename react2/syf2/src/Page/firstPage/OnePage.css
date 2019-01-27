@@ -15,9 +15,25 @@
   line-height: 40px;
   cursor: pointer;
 }
+.fp-head-item2{
+  height: 40px;
+  width: 50px;
+  background: lightcoral;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;  
+}
 .fp-con{
   width: 400px;
   background: lightblue;
   height: 400px;
+  margin: 0 auto;
+}
+.fp-inp{
+  width: 400px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  background: lemonchiffon;
   margin: 0 auto;
 }
