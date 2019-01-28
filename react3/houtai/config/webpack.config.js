@@ -336,7 +336,6 @@ module.exports = function(webpackEnv) {
                 customize: require.resolve(
                   'babel-preset-react-app/webpack-overrides'
                 ),
-                
                 plugins: [
                   [
                     require.resolve('babel-plugin-named-asset-import'),
@@ -349,11 +348,6 @@ module.exports = function(webpackEnv) {
                       },
                     },
                   ],
-                  // ['import',[{ 废弃
-                  //   libraryName:'antd',
-                  //   style:true
-                  // }]
-                  // ]
                 ],
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/

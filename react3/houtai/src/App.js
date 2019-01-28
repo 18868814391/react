@@ -1,28 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {Button} from 'antd';
-import 'antd/dist/antd.css';
+import {Button,Steps} from 'antd';
 
 class App extends Component {
+  
   render() {
+    const Step = Steps.Step;
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React<Button>233</Button>
-          </a>
-        </header>
+      <div>
+       <Button>233</Button>
+      <Steps>
+        <Step title="第一步" />
+        <Step title="第二步" />
+        <Step title="第三步" />
+      </Steps>
       </div>
+
     );
   }
 }
