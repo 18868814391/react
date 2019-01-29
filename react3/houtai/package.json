@@ -71,8 +71,10 @@
   ],
   "devDependencies": {
     "babel-plugin-import": "^1.11.0",
-    "less": "^2.7.3",
+    "customize-cra": "^0.2.11",
+    "less": "^2.7.2",
     "less-loader": "^4.1.0",
+    "react-app-rewired": "^2.0.2",
     "react-router-dom": "^4.3.1"
   },
   "jest": {
@@ -128,6 +130,6 @@
           "style": "css"
         }
       ]
-    ]    
+    ]
   }
 }
