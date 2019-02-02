@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import {Row, Col} from 'antd';
 import './index.less'
 
-class Footer extends Component {
+class Home extends Component {
   
   render() {
     return(
-      <div className="footer">
-        版权信息：2333333333333333333333333333
+      <div className="home-wrap">
+        欢迎欢迎哈哈哈哈哈哈
       </div>  
     )
   }
 }
 
-export default Footer;
+export default Home;
