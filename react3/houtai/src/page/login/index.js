@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
-import './App.css';
 import {Button,Steps,Switch} from 'antd';
-import './base.less'
 
-class App extends Component {
+class Login extends Component {
   
   render() {   
     return (
       <div>
-        {this.props.children}
+        loginpage
       </div>
 
     );
   }
 }
 
-export default App;
+export default Login;

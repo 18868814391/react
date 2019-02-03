@@ -6,7 +6,11 @@ class Main extends Component {
     return(
       <div>
         this is Main
-        <Link to="/main/a">嵌套路由</Link>       
+        <Link to="/main/test-id">嵌套路由1</Link>
+        <br/>
+        <Link to="/main/456">嵌套路由2</Link>
+        <hr/>
+        {this.props.children}          
       </div>
     )
   }
