@@ -4,6 +4,7 @@ import App from './App';
 import Login from './page/login';
 import Admin from './admin';
 import Buttons from './page/ui/buttons';
+import Modals from './page/ui/modals';
 import NoMatch from './page/noMatch/index';
 
 class IRoter extends Component {
@@ -14,8 +15,11 @@ class IRoter extends Component {
               <Route path="/login" component={Login}/>
               <Route path="/admin" render={()=>
                 <Admin>
+                    <Switch>
                     <Route path="/admin/ui/buttons" component={Buttons}/>
+                    <Route path="/admin/ui/modals" component={Modals}/>
                     <Route component={NoMatch}/>
+                    </Switch>
                 </Admin>    
               }/>
           </App>    
