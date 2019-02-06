@@ -8,6 +8,8 @@ import Modals from './page/ui/modals';
 import Loading from './page/ui/loading';
 import Notice from './page/ui/notice';
 import Messages from './page/ui/message';
+import Tabs from './page/ui/tabs';
+import Gallery from './page/ui/gallery';
 import NoMatch from './page/noMatch/index';
 
 class IRoter extends Component {
@@ -24,6 +26,8 @@ class IRoter extends Component {
                     <Route path="/admin/ui/loadings" component={Loading}/>
                     <Route path="/admin/ui/notification" component={Notice}/>
                     <Route path="/admin/ui/messages" component={Messages}/>
+                    <Route path="/admin/ui/tabs" component={Tabs}/>
+                    <Route path="/admin/ui/gallery" component={Gallery}/>
                     <Route component={NoMatch}/>
                     </Switch>
                 </Admin>    
