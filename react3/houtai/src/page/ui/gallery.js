@@ -43,7 +43,7 @@ class Gallery extends Component {
                 <Col md={4}>
                     {imgList[3]}
                 </Col>
-                <Col md={4}>
+                <Col md={4}> 
                     {imgList[4]}
                 </Col>
             </Row>
