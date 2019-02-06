@@ -10,6 +10,7 @@ import Notice from './page/ui/notice';
 import Messages from './page/ui/message';
 import Tabs from './page/ui/tabs';
 import Gallery from './page/ui/gallery';
+import Carousel from './page/ui/carousel';
 import NoMatch from './page/noMatch/index';
 
 class IRoter extends Component {
@@ -28,6 +29,7 @@ class IRoter extends Component {
                     <Route path="/admin/ui/messages" component={Messages}/>
                     <Route path="/admin/ui/tabs" component={Tabs}/>
                     <Route path="/admin/ui/gallery" component={Gallery}/>
+                    <Route path="/admin/ui/carousel" component={Carousel}/>
                     <Route component={NoMatch}/>
                     </Switch>
                 </Admin>    
