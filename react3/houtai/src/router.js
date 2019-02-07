@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {HashRouter,Route,Switch} from 'react-router-dom';
 import App from './App';
-import Login from './page/login';
+// import Login from './page/login';
 import Admin from './admin';
 import Buttons from './page/ui/buttons';
 import Modals from './page/ui/modals';
@@ -11,6 +11,7 @@ import Messages from './page/ui/message';
 import Tabs from './page/ui/tabs';
 import Gallery from './page/ui/gallery';
 import Carousel from './page/ui/carousel';
+import FormLogin from './page/form/login';
 import NoMatch from './page/noMatch/index';
 
 class IRoter extends Component {
@@ -18,7 +19,7 @@ class IRoter extends Component {
     return(
       <HashRouter>
           <App>
-              <Route path="/login" component={Login}/>
+              {/* <Route path="/login" component={Login}/> */}
               <Route path="/admin" render={()=>
                 <Admin>
                     <Switch>
@@ -30,6 +31,7 @@ class IRoter extends Component {
                     <Route path="/admin/ui/tabs" component={Tabs}/>
                     <Route path="/admin/ui/gallery" component={Gallery}/>
                     <Route path="/admin/ui/carousel" component={Carousel}/>
+                    <Route path="/admin/form/login" component={FormLogin}/>
                     <Route component={NoMatch}/>
                     </Switch>
                 </Admin>    
