@@ -13,6 +13,7 @@ import Gallery from './page/ui/gallery';
 import Carousel from './page/ui/carousel';
 import FormLogin from './page/form/login';
 import FormRegister from './page/form/register';
+import BasicTable from './page/table/basicTable';
 import NoMatch from './page/noMatch/index';
 
 class IRoter extends Component {
@@ -34,6 +35,7 @@ class IRoter extends Component {
                     <Route path="/admin/ui/carousel" component={Carousel}/>
                     <Route path="/admin/form/login" component={FormLogin}/>
                     <Route path="/admin/form/reg" component={FormRegister}/>
+                    <Route path="/admin/table/basic" component={BasicTable}/>
                     <Route component={NoMatch}/>
                     </Switch>
                 </Admin>    
