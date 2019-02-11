@@ -15,6 +15,7 @@ import FormLogin from './page/form/login';
 import FormRegister from './page/form/register';
 import BasicTable from './page/table/basicTable';
 import NoMatch from './page/noMatch/index';
+import HighTable from './page/table/highTable';
 
 class IRoter extends Component {
   render() {
@@ -36,6 +37,7 @@ class IRoter extends Component {
                     <Route path="/admin/form/login" component={FormLogin}/>
                     <Route path="/admin/form/reg" component={FormRegister}/>
                     <Route path="/admin/table/basic" component={BasicTable}/>
+                    <Route path="/admin/table/high" component={HighTable}/>
                     <Route component={NoMatch}/>
                     </Switch>
                 </Admin>    
