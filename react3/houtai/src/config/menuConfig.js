@@ -71,11 +71,11 @@ const menuList = [
   },
   {
       title:'富文本',
-      key:'/rich'
+      key:'/admin/rich'
   },
   {
       title:'城市管理',
-      key:'/city'
+      key:'/admin/city'
   },
   {
       title:'订单管理',

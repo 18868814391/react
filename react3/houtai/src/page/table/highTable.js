@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Card,Table, Modal,Button,message} from 'antd';
+import {Card,Table, Modal,Button,message, Badge} from 'antd';
 import axios from '../../axios/index';
 import Utils from '../../utils/utils';
 
@@ -36,8 +36,22 @@ class HighTable extends Component {
     })
 }
 
-handleChange=()=>{
-  
+handleChange=(pagination,filters,sorter)=>{
+  console.log("::"+sorter)  
+  this.setState({
+      sortOrder:sorter.order
+  })
+}
+handleDelete=(item)=>{
+    let id=item.id;
+    Modal.confirm({
+        title:'确认',
+        content:'您确认要删除此条数据吗',
+        onOk:()=>{
+            message.success('删除成功');
+            this.requset();
+        }
+    })
 }
   render() {
     const columns=[
@@ -248,7 +262,68 @@ const columns3=[
       key:'time',
   },
 ]   
-    return (
+const columns4=[
+    {
+        title:'id',
+        dataIndex:'id',
+        key:'id',
+    },
+    {
+        title:'用户名',
+        dataIndex:'userName',
+        key:'userName'
+    },
+    {
+        title:'性别',
+        dataIndex:'sex',
+        key:'sex',
+        render(sex){
+            return sex==1?'男':'女'
+        }
+    },
+    {
+      title:'年龄',
+      dataIndex:'age',
+      key:'age',
+  },
+    {
+        title:'状态',
+        dataIndex:'state',
+        key:'state',
+        render(state){
+            let config={
+                '1':<Badge status="success" text="咸鱼"/>,
+                '2':<Badge status="error" text="喷子"/>,
+                '3':<Badge status="default" text="甲鱼"/>,
+                '4':<Badge status="processing" text="跳跳鱼"/>,
+                '5':<Badge status="warning" text="213"/>,
+            }
+            return config[state];
+        }
+    },
+    {
+        title:'爱好',
+        dataIndex:'interest',
+        key:'interest'
+    },
+    {
+        title:'生日',
+        dataIndex:'birthday',
+        key:'birthday'
+    },
+    {
+        title:'地址',
+        dataIndex:'address',
+        key:'address'
+    },
+    {
+        title:'操作',
+        render:(text,item)=>{
+            return <Button size="small" onClick={(item)=>{this.handleDelete(item)}}>删除</Button>
+        }
+    },
+  ]  
+return (
       <div> 
           <Card title="头部固定">
             <Table
@@ -278,7 +353,16 @@ const columns3=[
                 pagination={false}
                 onChange={this.handleChange}
             />
-          </Card>             
+          </Card>    
+          <hr/>
+          <Card title="操作按钮">
+            <Table
+                bordered
+                columns={columns4}
+                dataSource={this.state.dataSource}
+                pagination={false}
+            />
+          </Card>           
       </div>
 
     );
